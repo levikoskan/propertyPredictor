@@ -1,17 +1,9 @@
 {
-  "name": "propertyPredictor",
+  "name": "react-tutorials",
   "version": "0.0.0",
-  "private": true,
-  "scripts": {
-    "start": "node ./bin/www"
-  },
+  "description": "",
+  "main": "webpack.config.js",
   "dependencies": {
-    "body-parser": "~1.13.2",
-    "cookie-parser": "~1.3.5",
-    "debug": "~2.2.0",
-    "ejs": "~2.3.3",
-    "express": "~4.13.1",
-    "morgan": "~1.6.1",
     "babel-loader": "^6.2.0",
     "babel-plugin-add-module-exports": "^0.1.2",
     "babel-plugin-react-html-attrs": "^2.0.0",
@@ -27,6 +19,11 @@
     "react-router": "^1.0.3",
     "webpack": "^1.12.9",
     "webpack-dev-server": "^1.14.1"
-    "serve-favicon": "~2.3.0"
-  }
+  },
+  "devDependencies": {},
+  "scripts": {
+    "dev": "webpack-dev-server --content-base src --inline --hot"
+  },
+  "author": "",
+  "license": "ISC"
 }
