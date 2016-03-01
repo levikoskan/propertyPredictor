@@ -1,8 +1,8 @@
 import React from "react";
 
-import Todo from "../components/Todo";
-import * as TodoActions from "../actions/TodoActions";
-import TodoStore from "../stores/TodoStore";
+import Todo from "../components/Home";
+import * as TodoActions from "../actions/HomeActions";
+import TodoStore from "../stores/HomeStore";
 
 var zip = null;
 export default class Featured extends React.Component {

@@ -2,7 +2,7 @@ import { EventEmitter } from "events";
 
 import dispatcher from "../dispatcher";
 
-class TodoStore extends EventEmitter {
+class HomeStore extends EventEmitter {
   constructor() {
     super()
     this.todos = [
@@ -49,7 +49,7 @@ class TodoStore extends EventEmitter {
 
 }
 
-const todoStore = new TodoStore;
-dispatcher.register(todoStore.handleActions.bind(todoStore));
+const homeStore = new HomeStore;
+dispatcher.register(homeStore.handleActions.bind(homeStore));
 
-export default todoStore;
+export default homeStore;
