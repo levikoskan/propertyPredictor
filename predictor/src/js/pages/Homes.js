@@ -1,7 +1,6 @@
 import React from "react";
-import { IndexLink, Link } from "react-router";
 
-import Home from "../components/Home";
+import Result from "../components/Result";
 import * as HomeActions from "../actions/HomeActions";
 import HomeStore from "../stores/HomeStore";
 
@@ -9,29 +8,11 @@ import HomeStore from "../stores/HomeStore";
 var zip = null;
 
 export default class Featured extends React.Component {
-  constructor() {
-    super();
-    this.update = this.update.bind(this);
-    this.state = {
-      homeData: HomeStore.getScore(),
-    };
 
-  }
+    // getinitialState: function() {
+    //   return {'submitted': false};
+    // },
 
-  componentWillMount() {
-    HomeStore.on("change", this.update);
-  }
-
-  componentWillUnmount() {
-    HomeStore.removeListener("change", this.update);
-  }
-
-update() {
-    this.setState({
-      homeData: HomeStore.getScore()
-    });
-
-  }
 
   userInput() {
     if (zip.length != 5 && typeof zip != "number"){
@@ -43,26 +24,31 @@ update() {
 
   handleChange(e){
     zip = Number(e.target.value);
+    this.setState({'submitted': true });
   }
 
+
+
   render() {
-    const test = this.state.homeData;
-    console.log(test.totalScore);
-    const archivesClass = location.pathname.match(/^\/results/) ? "active" : "";
 
-    return (
-      <div>
-        <form onSubmit={this.userInput.bind(this)} >
-        <button class={archivesClass}>
-                <Link to="results">Zip Code</Link>
-        </button>
-          <input onChange={this.handleChange.bind(this)}/>
-        </form>
-        <h1>Personal Property Predictor {test.totalScore}</h1>
+    // if (this.state.submited) {
+    //         return <h4>party time bitches</h4>;
+    //     }
+    // else {
+      console.log(Result);
+      return (
+        <div>
 
+          <form onSubmit={this.userInput.bind(this)} >
+          <button >
+                  Zip Code
+          </button>
+            <input onChange={this.handleChange.bind(this)}/>
+          </form>
 
-      </div>
-    );
-
+          <Result />
+        </div>
+      );
+    // }
   }
 }

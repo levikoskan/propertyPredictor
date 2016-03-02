@@ -1,5 +1,4 @@
 import React from "react";
-import { IndexLink, Link } from "react-router";
 
 import Home from "../components/Home";
 import * as HomeActions from "../actions/HomeActions";
@@ -51,10 +50,6 @@ update() {
 
     return (
       <div>
-
-        <button class={featuredClass}>
-                <Link to="/">"Test a new address?"</Link>
-        </button>
 
         <h1>results son {test.totalScore}</h1>
 
