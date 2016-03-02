@@ -11,7 +11,7 @@ export default class Featured extends React.Component {
     super();
     this.update = this.update.bind(this);
     this.state = {
-      totalScore: HomeStore.getAll(),
+      homeData: HomeStore.getScore(),
     };
 
   }
@@ -26,7 +26,7 @@ export default class Featured extends React.Component {
 
 update() {
     this.setState({
-      totalScore: HomeStore.getAll()
+      homeData: HomeStore.getScore()
     });
 
   }
@@ -55,7 +55,7 @@ update() {
   }
 
   render() {
-    const test = this.state.totalScore;
+    const test = this.state.homeData;
 
     return (
       <div>
@@ -65,6 +65,7 @@ update() {
         </form>
         <h1>Personal Property Predictor</h1>
         <h4>the total score is {test.totalScore}</h4>
+
       </div>
     );
 

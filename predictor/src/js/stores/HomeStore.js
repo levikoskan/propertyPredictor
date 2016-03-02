@@ -5,35 +5,56 @@ import dispatcher from "../dispatcher";
 class HomeStore extends EventEmitter {
   constructor() {
     super()
-    this.totalScore = {
-      totalScore: 0
+    this.homeData = {
+      totalScore: 0,
+      homeValue: 0,
+      transValue: 0,
+      crimeValue: 0
     }
 
-     // homeValue: 0,
-     //  transValue: 0,
-     //  crimeValue: 0
   }
 
-getAll(){
-  console.log("homestore totalscore value is "+ this.totalScore.totalScore);
-  return this.totalScore;
+getScore(){
+  return this.homeData;
 }
+
 
   handleActions(action) {
     switch(action.type) {
-      case "RECEIVE_SCORE": {
-        this.totalScore.totalScore = action.totalScore;
-        // this.homeValue = action.homeValue;
-        // this.transValue = action.transValue;
-        // this.crimeValue = action.crimeValue;
+      case "RECEIVE_DATA": {
+        var data = action.api
+        var zip = action.zip
+        var dataArray =[];
+        this.homeData.totalScore = zipAlgorithm(data, zip);
+        this.homeData.homeValue = homeScore(data);
+        this.homeData.transValue = transScore(data);
+        this.homeData.crimeValue = crimeScore(zip);
         this.emit("change");
       }
     }
   }
 
 }
+  function zipAlgorithm(apiData, zipData){
+    var score = (homeScore(apiData) + transScore(apiData) + crimeScore(zipData));
+    return score;
+}
+  function homeScore (apiData){
+    var historyOfHome = apiData[0].change_in_median_home_value_2000_2012;
+    var homeScore = Number((homeValue(historyOfHome)).toFixed(2));
+    return homeScore;
+  }
+  function transScore (apiData){
+    var transCost = apiData[0].average_monthly_transportation_cost;
+    var transScore = transValue(transCost);
+    return transScore;
+  }
+  function crimeScore (zipData){
+    var crimeScore = crimeValue(zipData);
+    return crimeScore;
+  }
 
-created the function to determin our home value score
+// created the function to determin our home value score
   function homeValue(value){
     var score = (value/100) * 5;
     return score > 5 ? 5 : score;
@@ -58,58 +79,22 @@ created the function to determin our home value score
   }
 
   function transValue(cost){
-    switch(cost){
-      case (cost <= 500):
-        return 2;
-      break;
-      case (cost <= 550):
-        return 2;
-      break;
-      case (cost <= 500):
-        return 2;
-      break;
-      case (cost <= 500):
-        return 2;
-      break;
-      case (cost <= 500):
-        return 2;
-      break;
-      case (cost <= 500):
-        return 2;
-      break;
-    }
     if (cost <= 500){
-
       return 2;
-
     }else if (cost < 550) {
-
       return 1.75;
-
     }else if (cost < 600) {
-
       return 1.5;
-
     }else if (cost < 650) {
-
       return 1.25;
-
     }else if (cost < 700) {
-
       return 1;
-
     }else if (cost < 750) {
-
       return .75;
-
     }else if (cost < 800) {
-
      return .5;
-
     }else if (cost < 850) {
-
       return .25;
-
     }else{
       return 0
     }
