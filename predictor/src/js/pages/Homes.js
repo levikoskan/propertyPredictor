@@ -1,64 +1,72 @@
 import React from "react";
 
-import Todo from "../components/Home";
-import * as TodoActions from "../actions/HomeActions";
-import TodoStore from "../stores/HomeStore";
+import Home from "../components/Home";
+import * as HomeActions from "../actions/HomeActions";
+import HomeStore from "../stores/HomeStore";
 
 var zip = null;
+
 export default class Featured extends React.Component {
   constructor() {
     super();
-    this.getTodos = this.getTodos.bind(this);
+    this.update = this.update.bind(this);
     this.state = {
-      todos: TodoStore.getAll(),
+      totalScore: HomeStore.getAll(),
     };
+
   }
 
   componentWillMount() {
-    TodoStore.on("change", this.getTodos);
+    HomeStore.on("change", this.update);
   }
 
   componentWillUnmount() {
-    TodoStore.removeListener("change", this.getTodos);
+    HomeStore.removeListener("change", this.update);
   }
 
-  getTodos() {
+update() {
     this.setState({
-      todos: TodoStore.getAll(),
+      totalScore: HomeStore.getAll()
     });
+
   }
 
+  // update(){
+    // console.log("home page " + this.homeValue);
+    // console.log("home page " + this.transValue);
+    // console.log("home page " + this.crimeValue);
+    // console.log("home page " + this.totalScore);
 
-  reloadTodos() {
+  //    this.setState({
+  //     totalScore: HomeStore.getAll()
+  //   });
+  // }
+
+  getScore() {
     if (zip.length != 5 && typeof zip != "number"){
       alert("invalid zip code entry");
     }else{
-      TodoActions.reloadTodos(zip);
+      HomeActions.getScore(zip);
     }
-
   }
 
   handleChange(e){
     zip = Number(e.target.value);
-
   }
 
   render() {
-    const { todos } = this.state;
-
-    const TodoComponents = todos.map((todo) => {
-        return <Todo key={todo.id} {...todo}/>;
-    });
+    const test = this.state.totalScore;
 
     return (
       <div>
-        <form onSubmit={this.reloadTodos.bind(this)} >
+        <form onSubmit={this.getScore.bind(this)} >
           <button>Zip Code</button>
           <input onChange={this.handleChange.bind(this)}/>
         </form>
         <h1>Personal Property Predictor</h1>
-        <ul>{TodoComponents}</ul>
+        <h4>the total score is {test.totalScore}</h4>
       </div>
     );
+
   }
 }

@@ -1,20 +1,7 @@
 import dispatcher from "../dispatcher";
 
-export function createTodo(text) {
-  dispatcher.dispatch({
-    type: "CREATE_TODO",
-    text,
-  });
-}
 
-export function deleteTodo(id) {
-  dispatcher.dispatch({
-    type: "DELETE_TODO",
-    id,
-  });
-}
-
-export function reloadTodos(zip) {
+export function getScore(zip) {
 
   $.ajax({
     method: 'GET',
@@ -35,17 +22,24 @@ export function reloadTodos(zip) {
 
     var historyOfHome = data[0].change_in_median_home_value_2000_2012;
     var transCost = data[0].average_monthly_transportation_cost;
-      console.log("home score is "+ (homeValue(historyOfHome)).toFixed(2));
-      console.log("trans score is "+ transValue(transCost));
-      console.log("crime score is "+ crimeValue(zip));
-      console.log("the total score is " +(homeValue(historyOfHome) + transValue(transCost)+ crimeValue(zip)).toFixed(2));
+      var homeScore = "home score is "+ (homeValue(historyOfHome)).toFixed(2);
+      var transScore = "trans score is "+ transValue(transCost);
+      var crimeScore = "crime score is "+ crimeValue(zip);
+      var score = (homeValue(historyOfHome) + transValue(transCost)+ crimeValue(zip)).toFixed(2);
 
+      dispatcher.dispatch({
+        type: "RECEIVE_SCORE",
+        totalScore: score
+        // homeValue: homeScore,
+        // transValue: transScore,
+        // crimeValue: crimeScore
+        });
     }
   })
   .fail(function(jqXHR, textStatus) {
     console.log('Request failed: ' + textStatus);
   });
-
+};
 // created the function to determin our home value score
   function homeValue(value){
     var score = (value/100) * 5;
@@ -106,23 +100,4 @@ export function reloadTodos(zip) {
     }else{
       return 0
     }
-
   }
-
-
-  dispatcher.dispatch({type: "FETCH_TODOS"});
-  setTimeout(() => {
-    dispatcher.dispatch({type: "RECEIVE_TODOS", todos: [
-      {
-        id: 8484848484,
-        text: "Go Shopping Again",
-        complete: false
-      },
-      {
-        id: 6262627272,
-        text: "Hug Wife",
-        complete: true
-      },
-    ]});
-  }, 1000);
-}
