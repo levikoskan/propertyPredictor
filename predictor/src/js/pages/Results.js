@@ -8,7 +8,7 @@ import HomeStore from "../stores/HomeStore";
 
 var zip = null;
 
-export default class Featured extends React.Component {
+export default class Archives extends React.Component {
   constructor() {
     super();
     this.update = this.update.bind(this);
@@ -33,11 +33,11 @@ update() {
 
   }
 
-  userInput() {
+  getScore() {
     if (zip.length != 5 && typeof zip != "number"){
       alert("invalid zip code entry");
     }else{
-      HomeActions.getApi(zip);
+      HomeActions.getScore(zip);
     }
   }
 
@@ -47,18 +47,16 @@ update() {
 
   render() {
     const test = this.state.homeData;
-    console.log(test.totalScore);
-    const archivesClass = location.pathname.match(/^\/results/) ? "active" : "";
+    const featuredClass = location.pathname === "/" ? "active" : "";
 
     return (
       <div>
-        <form onSubmit={this.userInput.bind(this)} >
-        <button class={archivesClass}>
-                <Link to="results">Zip Code</Link>
+
+        <button class={featuredClass}>
+                <Link to="/">"Test a new address?"</Link>
         </button>
-          <input onChange={this.handleChange.bind(this)}/>
-        </form>
-        <h1>Personal Property Predictor {test.totalScore}</h1>
+
+        <h1>results son {test.totalScore}</h1>
 
 
       </div>

@@ -15,6 +15,7 @@ class HomeStore extends EventEmitter {
   }
 
 getScore(){
+  console.log(this.homeData.totalScore +" HomeStore");
   return this.homeData;
 }
 

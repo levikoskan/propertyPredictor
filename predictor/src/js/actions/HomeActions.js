@@ -1,7 +1,7 @@
 import dispatcher from "../dispatcher";
 
 
-export function getScore(zip) {
+export function getApi(zip) {
 
   $.ajax({
     method: 'GET',
