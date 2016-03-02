@@ -11,14 +11,22 @@ class HomeStore extends EventEmitter {
       transValue: 0,
       crimeValue: 0
     }
+    this.state = false
 
   }
 
-getScore(){
-  console.log(this.homeData.totalScore +" HomeStore");
-  return this.homeData;
-}
+  getScore(){
+    console.log(this.homeData.totalScore +" HomeStore");
+    return this.homeData;
+  }
 
+  getState(){
+    return this.state;
+  }
+
+  updateHomePage(){
+    this.emit("stateChange");
+  }
 
   handleActions(action) {
     switch(action.type) {
