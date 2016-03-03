@@ -9,7 +9,7 @@ export default class Footer extends React.Component {
       <footer >
         <div class="row">
           <div class="col-lg-12">
-            <p></p>
+            <p>Provided by Levi Koskan</p>
           </div>
         </div>
       </footer>
