@@ -1,6 +1,7 @@
 import React from "react";
 
 import Result from "../components/Result";
+
 import * as HomeActions from "../actions/HomeActions";
 import HomeStore from "../stores/HomeStore";
 
@@ -12,7 +13,8 @@ export default class Featured extends React.Component {
     super();
     this.newState = this.newState.bind(this);
      this.state = {
-        submitted: false
+        submitted: false,
+        infoPage: false
       }
     }
 
@@ -30,6 +32,8 @@ export default class Featured extends React.Component {
     });
   }
 
+
+
   userInput() {
     if (typeof zip != 'number' || zip.toString().length != 5){
       alert("invalid entry");
@@ -44,18 +48,18 @@ export default class Featured extends React.Component {
   }
 
   render() {
-
-      console.log(this.state.submitted);
-      if (this.state.submitted){
+     if (this.state.submitted){
         return (
           <div>
             <Result />
-
           </div>
         );
       }else{
       return (
         <div>
+          <div className="row" className="homeForm">
+            <h4>Will your property appreciate?</h4>
+          </div>
 
           <form onSubmit={this.userInput.bind(this)}>
             <div className="row" className="homeForm">

@@ -63,12 +63,25 @@ body{
 .infoBox{
   height: 400px;
   width: 100px;
-  background-color: red;
+  font-size: 20px;
+  background-color: #F60C00;
   margin-top: -80px;
   display: flex;
   justify-content: column;
   flex-wrap: wrap;
+  border-radius: 0px 15px 15px 0px;
+  border: none;
+  border-right: 5px solid #C62C20;
+  outline: none;
+  transition: all 0.1s;
+  -webkit-transition: all 0.1s;
 }
+.infoBox:active {
+    transform: translate(0px,5px);
+    -webkit-transform: translate(0px,5px);
+    border-right: .25px solid #F60C00;
+}
+
 #howItWorks{
   margin-left: -70px;
 }
@@ -77,14 +90,26 @@ body{
 }
 .infoText{
   margin-bottom: -1px;
+  color: black;
+
 }
 .infoUl{
   list-style-type: none;
   text-align: center;
+
 }
-.test{
-  height: 400px;
-  width: 100px;
-  background-color: yellow;
-  visibility: hidden;
+
+/*disclaimer styling*/
+#disclaimer{
+  margin-top: -40px;
+}
+#disBtn{
+  background-color: #0F4BCB;
+  border-bottom: 5px solid #214799;
+}
+#disBtn:active{
+  border-bottom: .25px solid #0F4BCB;
+}
+.disText{
+  text-align: center;
 }
