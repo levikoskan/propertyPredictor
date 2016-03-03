@@ -32,7 +32,7 @@ export default class Featured extends React.Component {
 
   userInput() {
     if (typeof zip != 'number' || zip.toString().length != 5){
-      alert("invalid zip code entry");
+      alert("invalid entry");
     }else{
       HomeActions.getApi(zip);
       this.setState({submitted: true });
@@ -50,17 +50,33 @@ export default class Featured extends React.Component {
         return (
           <div>
             <Result />
+
           </div>
         );
       }else{
       return (
         <div>
 
-          <form onSubmit={this.userInput.bind(this)} >
-          <button >
-                  Zip Code
-          </button>
-            <input onChange={this.handleChange.bind(this)}/>
+          <form onSubmit={this.userInput.bind(this)}>
+            <div className="row" className="homeForm">
+              <input className="street" className="streetField" placeholder="Street Name"/>
+            </div>
+            <div className="row" >
+              <div className="col-lg-12" className="homeForm">
+
+                  <input placeholder="City" className="addressField"/>
+
+                  <input placeholder="State" className="addressField"/>
+
+                  <input placeholder="Zip Code" className="addressField" onChange={this.handleChange.bind(this)} />
+
+              </div>
+            </div>
+            <div className="row" className="homeForm">
+              <button className="submit" >
+                    Submit
+              </button>
+            </div>
           </form>
 
 

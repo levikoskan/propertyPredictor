@@ -34,8 +34,19 @@ export default class Result extends React.Component {
     const data = this.state.homeData;
     return(
     <div>
-      <h4>The score is {data.totalScore}</h4>
-      <button onClick={this.newSearch.bind(this)}>enter another zip</button>
+      <div className="row" className="homeForm">
+        <h4>The total score is {data.totalScore}/10</h4>
+          <ul>
+            <li>history of appreciation: {data.homeValue}/5</li>
+            <li>crime: {data.transValue}/3</li>
+            <li>transportation cost: {data.crimeValue}/2</li>
+          </ul>
+      </div>
+      <div className="row" className="homeForm">
+              <button onClick={this.newSearch.bind(this)} id="resultSubmit"className="submit" >
+                    Try Another
+              </button>
+            </div>
     </div>
     );
   }

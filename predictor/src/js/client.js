@@ -5,7 +5,7 @@ import { Router, Route, IndexRoute, hashHistory } from "react-router";
 
 import Homes from "./pages/Homes";
 import Layout from "./pages/Layout";
-import Settings from "./pages/Settings";
+
 
 const app = document.getElementById('app');
 
