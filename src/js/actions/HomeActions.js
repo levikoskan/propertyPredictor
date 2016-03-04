@@ -14,7 +14,7 @@ export function getApi(zip) {
     dataType: 'json'
   })
   .done(function(data) {
-
+    console.log(data +"hello");
     if (data[0] === undefined){
       alert("no zip in data base that matches that record");
       // return something about unable to locate the zip due to incomplete database

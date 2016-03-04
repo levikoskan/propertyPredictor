@@ -6,6 +6,11 @@ class HomeStore extends EventEmitter {
   constructor() {
     super()
     this.homeData = {
+      homeHis: 0,
+      transCost: 0,
+      crime: 0
+    }
+    this.homeDataScore = {
       totalScore: 0,
       homeValue: 0,
       transValue: 0,
@@ -18,11 +23,15 @@ class HomeStore extends EventEmitter {
   }
 
   getScore(){
-    return this.homeData;
+    return this.homeDataScore;
   }
 
   getState(){
     return this.state.submitted;
+  }
+
+  getHomeData(){
+    return this.homeData;
   }
 
 
@@ -35,11 +44,15 @@ class HomeStore extends EventEmitter {
       case "RECEIVE_DATA": {
         var data = action.api
         var zip = action.zip
-        var dataArray =[];
-        this.homeData.totalScore = zipAlgorithm(data, zip);
-        this.homeData.homeValue = homeScore(data);
-        this.homeData.transValue = transScore(data);
-        this.homeData.crimeValue = crimeScore(zip);
+        console.log(data);
+        this.homeData.homeHis = data[0].change_in_median_home_value_2000_2012;
+        this.homeData.transCost = data[0].average_monthly_transportation_cost;
+        this.homeData.crime = crimeScore(zip);
+
+        this.homeDataScore.totalScore = zipAlgorithm(data, zip);
+        this.homeDataScore.homeValue = homeScore(data);
+        this.homeDataScore.transValue = transScore(data);
+        this.homeDataScore.crimeValue = crimeScore(zip);
         this.emit("change");
       }
     }

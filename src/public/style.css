@@ -7,7 +7,12 @@ body{
 .homeForm{
   display: flex;
   justify-content: center;
-
+}
+.fontStyle{
+  font-family: 'Kaushan Script', cursive;
+}
+.fontStyleCabin{
+  font-family: 'Cabin', sans-serif;
 }
 .streetField{
   height: 75px;
@@ -52,6 +57,12 @@ body{
 }
 
 /*results page*/
+.resultTitle{
+  margin-top: -80px;
+}
+.resultScores{
+  margin-top: 30px;
+}
 #resultSubmit{
   background-color: #EEFF21;
   border-bottom: 5px solid #797F2F;
@@ -59,13 +70,29 @@ body{
 #resultSubmit:active{
   border-bottom: .25px solid #EEFF21;
 }
+#totalScore{
+  font-size: 30px;
+  font-family: 'Cabin', sans-serif;
+}
+.resultUl{
+  list-style-type: none;
+  font-size: 20px;
+  font-family: 'Cabin', sans-serif;
+}
+.resultInfo{
+  font-family: 'Cabin', sans-serif;
+}
+#resultBottomInfo{
+  margin-top: -5px;
+}
 /*information components*/
 .infoBox{
   height: 400px;
   width: 100px;
   font-size: 20px;
+  font-family: 'Indie Flower', cursive;
   background-color: #F60C00;
-  margin-top: -80px;
+  margin-top: -130px;
   display: flex;
   justify-content: column;
   flex-wrap: wrap;
@@ -96,20 +123,23 @@ body{
 .infoUl{
   list-style-type: none;
   text-align: center;
-
 }
 
 /*disclaimer styling*/
 #disclaimer{
   margin-top: -40px;
+
 }
 #disBtn{
   background-color: #0F4BCB;
   border-bottom: 5px solid #214799;
+  color: black;
 }
 #disBtn:active{
   border-bottom: .25px solid #0F4BCB;
 }
 .disText{
   text-align: center;
+  font-family: 'Cabin', sans-serif;
+  font-size: 16px;
 }

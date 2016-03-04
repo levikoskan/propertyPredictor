@@ -16,7 +16,7 @@ export default class Layout extends React.Component {
       <div>
 
         <div className="row" className="homeForm">
-            <h1>Property</h1> <img src="../public/logo.jpg" alt=""/> <h1>Predictor</h1>
+            <h1 className="fontStyle">Property <img src="../public/homeLogo.png" alt=""/> Predictor</h1>
           </div>
 
 

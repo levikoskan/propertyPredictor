@@ -13,8 +13,7 @@ export default class Featured extends React.Component {
     super();
     this.newState = this.newState.bind(this);
      this.state = {
-        submitted: false,
-        infoPage: false
+        submitted: false
       }
     }
 
@@ -33,7 +32,6 @@ export default class Featured extends React.Component {
   }
 
 
-
   userInput() {
     if (typeof zip != 'number' || zip.toString().length != 5){
       alert("invalid entry");
@@ -47,7 +45,16 @@ export default class Featured extends React.Component {
       zip = Number(e.target.value);
   }
 
+  tester(){
+    return(
+      <div>
+        <Result />
+      </div>
+      )
+  }
+
   render() {
+
      if (this.state.submitted){
         return (
           <div>
@@ -58,10 +65,10 @@ export default class Featured extends React.Component {
       return (
         <div>
           <div className="row" className="homeForm">
-            <h4>Will your property appreciate?</h4>
+            <h4 className="fontStyleCabin">Will your property appreciate?</h4>
           </div>
 
-          <form onSubmit={this.userInput.bind(this)}>
+
             <div className="row" className="homeForm">
               <input className="street" className="streetField" placeholder="Street Name"/>
             </div>
@@ -77,11 +84,12 @@ export default class Featured extends React.Component {
               </div>
             </div>
             <div className="row" className="homeForm">
-              <button className="submit" >
-                    Submit
+              <button onClick={this.userInput.bind(this)} className="submit" >
+                    <span className="fontStyle">Submit</span>
+
               </button>
             </div>
-          </form>
+
 
 
         </div>

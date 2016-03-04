@@ -13,11 +13,12 @@ export default class Info extends React.Component {
   render() {
     const disclaimer = location.pathname.match(/^\/disclaimer/) ? "active" : "";
     const linkStyle = { textDecoration: 'none'};
+    const infoBtn = 'infoBox';
 
       return (
         <div>
           <Link to="disclaimer" style={linkStyle}>
-          <button className={disclaimer} id="howItWorks" className="infoBox" >
+          <button className={disclaimer} id="howItWorks" className="infoBox" type="button">
             <ul className="infoUl">
               <li className="infoText">H</li>
               <li className="infoText">O</li>

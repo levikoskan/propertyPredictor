@@ -9,7 +9,8 @@ export default class Result extends React.Component {
     super();
     this.update = this.update.bind(this);
     this.state = {
-      homeData: HomeStore.getScore(),
+      homeData: HomeStore.getHomeData(),
+      homeDataScore: HomeStore.getScore(),
     };
   }
 
@@ -23,28 +24,56 @@ export default class Result extends React.Component {
 
   update() {
     this.setState({
-      homeData: HomeStore.getScore()
+      homeData: HomeStore.getHomeData(),
+      homeDataScore: HomeStore.getScore()
     });
   }
 
   newSearch(){
     HomeStore.updateHomePage();
   }
+
+    showMoreData(){
+      if (false){
+        return false
+      }else{
+        return(
+          <div>hello
+          </div>
+          )
+      }
+    }
+
+
   render() {
+    const dataScore = this.state.homeDataScore;
     const data = this.state.homeData;
+    console.log(data);
+    console.log(dataScore);
+
     return(
     <div>
-      <div className="row" className="homeForm">
-        <h4>The total score is {data.totalScore}/10</h4>
-          <ul>
-            <li>history of appreciation: {data.homeValue}/5</li>
-            <li>crime: {data.transValue}/3</li>
-            <li>transportation cost: {data.crimeValue}/2</li>
+      <div className="row" className="homeForm resultTitle">
+        <h2 className="fontStyle">Results</h2>
+      </div>
+      <div className="row"  className="homeForm">
+        <h4 className="resultInfo">Your score based between 1-10</h4>
+      </div>
+      <div className="row"  className="homeForm">
+        <h4 className="resultInfo" id="resultBottomInfo">1: Not likely at all for appreciation. 10: Extremely likely for appreciation.</h4>
+      </div>
+      <div className="row" className="homeForm resultScores">
+        <h4 id="totalScore">The total score is {dataScore.totalScore}/10</h4>
+
+          <ul className="resultUl">
+            <li>history of appreciation: {dataScore.homeValue}/5</li>
+            <li>crime: {dataScore.transValue}/3</li>
+            <li>transportation cost: {dataScore.crimeValue}/2</li>
           </ul>
       </div>
       <div className="row" className="homeForm">
               <button onClick={this.newSearch.bind(this)} id="resultSubmit"className="submit" >
-                    Try Another
+                    <span className="fontStyle">Try Another</span>
               </button>
             </div>
     </div>
