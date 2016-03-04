@@ -63,7 +63,7 @@ export default class Result extends React.Component {
         <h4 className="resultInfo" id="resultBottomInfo">1: Not likely at all for appreciation. 10: Extremely likely for appreciation.</h4>
       </div>
       <div className="row" className="homeForm resultScores">
-        <h4 id="totalScore">The total score is {dataScore.totalScore}/10</h4>
+        <h4 id="totalScore">Property appreciation score: {dataScore.totalScore}</h4>
 
           <ul className="resultUl">
             <li>history of appreciation: {dataScore.homeValue}/5</li>
