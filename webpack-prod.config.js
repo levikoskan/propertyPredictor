@@ -2,14 +2,15 @@ var path = require('path');
 var webpack = require('webpack');
 
 module.exports = {
+  context: path.join(__dirname, "src"),
   devtool: 'source-map',
   entry: [
-    './src/entry'
+    './js/client.js'
   ],
   output: {
-    path: path.join(__dirname, 'public'),
+    path: path.join(__dirname, '/src/'),
     filename: 'bundle.js',
-    publicPath: '/public/'
+
   },
   plugins: [
     new webpack.optimize.DedupePlugin(),
