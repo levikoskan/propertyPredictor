@@ -2,18 +2,19 @@ var path = require('path');
 var webpack = require('webpack');
 
 module.exports = {
+  context: path.join(__dirname, "src"),
   devtool: 'eval',
 
   entry: [
     'webpack-dev-server/client?http://localhost:3000',
     'webpack/hot/only-dev-server',
-    './src/entry'
+    './js/client.js'
   ],
 
   output: {
-    path: path.join(__dirname, 'public'),
+    path: path.join(__dirname, '/src'),
     filename: 'bundle.js',
-    publicPath: '/public/'
+
   },
 
   plugins: [
