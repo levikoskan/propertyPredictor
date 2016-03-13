@@ -3,4 +3,6 @@ import ReactDOM from "react-dom";
 import App from './components/app';
 import '../css/app.scss';
 
-ReactDOM.render(<App/>, document.body);
+const app = document.getElementById('app');
+
+ReactDOM.render(<App/>, app);
