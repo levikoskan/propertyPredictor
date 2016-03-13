@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router";
 
 import Footer from "../components/layout/Footer";
-import Info from "../components/info";
+
 
 
 export default class Layout extends React.Component {
@@ -23,7 +23,7 @@ export default class Layout extends React.Component {
         <div className="container" style={containerStyle}>
           <div className="row">
             <div className="col-lg-1">
-              <Info />
+
             </div>
             <div className="col-lg-10">
               {this.props.children}
