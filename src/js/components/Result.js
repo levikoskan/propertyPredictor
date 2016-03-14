@@ -67,7 +67,7 @@ export default class Result extends React.Component {
 
           <ul className="resultUl">
             <li>history of appreciation: {dataScore.homeValue}/5</li>
-            <li>crime: {dataScore.transValue}/3</li>
+            <li>safty score: {dataScore.transValue}/3</li>
             <li>transportation cost: {dataScore.crimeValue}/2</li>
           </ul>
       </div>

@@ -47,19 +47,4 @@ export default class Disclaimer extends React.Component {
   }
 }
 
-        // <div className="row" className="homeForm">
-        //   <p className="disText">
-        //     Most people understand that given enough time real estate almost always appreciates in value. The reality is that most people buy/sale real estate multiple times in their lives without having owned a piece of property for 10+ years.
-        //   </p >
-        // </div>
-        // <div className="row" className="homeForm">
-        //   <p className="disText">
-        //     This site is here to give the average buyer a tool that will help them predict appreciation for the short to mid-term or 5 to 10 years.
-        //   </p>
-        // </div>
 
-        // <div className="homeForm">
-        //   <h4 className="fontStyle">
-        //     How we are helping
-        //   </h4>
-        // </div>
